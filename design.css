@@ -1,0 +1,57 @@
+.box {
+    width: 7%;
+    padding: 15px 10px;
+    margin: 5px ;
+    box-sizing: border-box;
+    border: none;
+    color:white;
+    
+  
+  border-radius: 10px;
+  
+  
+}
+.textblue{
+  color:blue;
+}
+.textred{
+  color:red;
+}
+.textwhite{
+  color:rgb(158, 155, 155);
+}
+
+
+.lightRed{
+    
+  background-color: #FA8072;
+}
+.blue{
+  background-color: blue;
+}
+.darkBlue{
+  background-color: rgb(3, 3, 77);
+}
+.lightBlue{
+  background-color: rgb(147, 147, 240);
+}
+.div1{
+  box-sizing: border-box;
+    border: none;
+  background-color:#FCDDDD;
+  border-radius: 10px;
+}
+.div2 {
+  width: 7%;
+    padding: 15px 10px;
+    margin: 5px ;
+    height:100px;
+    box-sizing: border-box;
+    background-color:#FCDDDD;
+    border: none;
+    
+background-color:rgb(121, 109, 109);
+border-radius: 10px;}
+.div3{
+  background-color:#FCDDDD;
+}
