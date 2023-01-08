@@ -18,12 +18,12 @@
             <h2 style="color:red;">All Invoices</h2>
             <form>
 
-                <label for="Begin Date">Begin Date</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <label for="End Date">End Date</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="Begin Date">Begin Date</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="End Date">End Date</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;
                 <label for="Status">Status</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;
-                <label for="Client">Client</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+                <label for="Client">Client</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
                 <input type="date" id="Begin" name="Begin" class="box darkBlue filter">
 
                 <input type="date" id="End" name="End" class="box lightBlue filter">
@@ -45,19 +45,19 @@
                 *THis data has been shown according to your given informations.
         </div>
         </form>
-        <table style=" border-collapse: collapse ;text-align: center;">
+        <table style=" width:100%; background-color: #D6EEEE; border-collapse: collapse ;text-align: center;">
 
-            <tr class="div2" style="border-radius: 10px">
-                <th>invoice</th>
-                <th>client_name</th>
-                <th>date</th>
-                <th>due_date</th>
-                <th>total</th>
-                <th>balance</th>
-                <th>status</th>
+            <tr  class="" >
+                <th  data-column="invoice" data-order="desc">invoice &#9650</th>
+                <th data-column="client_name" data-order="desc">client_name &#9650</th>
+                <th data-column="date" data-order="desc">date &#9650</th>
+                <th data-column="due_date" data-order="desc">due_date &#9650</th>
+                <th data-column="total" data-order="desc">total &#9650</th>
+                <th data-column="balance" data-order="desc">balance &#9650</th>
+                <th  data-column="status" data-order="desc">status &#9650</th>
             </tr>
 
-            <tbody id="myTable" class="div1">
+            <tbody id="myTable" class="">
 
             </tbody>
         </table>
@@ -308,7 +308,26 @@
            
         }
 
+        $('th').on('click', function(){
+		var column = $(this).data('column')
+		var order = $(this).data('order')
+		var text = $(this).html()
+		text = text.substring(0, text.length - 1)
 
+		if(order == 'desc'){
+			$(this).data('order', "asc")
+			data = data.sort((a,b) => a[column] > b[column] ? 1 : -1)
+			text += '&#9660'
+
+		}else{
+			$(this).data('order', "desc")
+			data = data.sort((a,b) => a[column] < b[column] ? 1 : -1)
+			text += '&#9650'
+
+		}
+		$(this).html(text)
+		buildTable(data)
+	})
 // $("#Begin").on("change", function () {
         //     var checkBeginEnd = true
         //     if(checkEnd){
