@@ -52,17 +52,45 @@
             }
 
         }
-        function calculatey(){
+       function calculatey(){
             arrayDataX =[];
             arrayDataY =[];
             arrayDataL1 =[];
             
             var tableRows =document.getElementById("numberOfRows").value;
+            var x = document.getElementById("valueOfx").value
+            for(var i=0;i<tableRows;i++){
+
+                arrayDataX.push(document.getElementById(`x${i}`).value)
+                arrayDataY.push(document.getElementById(`y${i}`).value)
+
+
+            }
+            var lupper=1;
+            var ldown=1;
+            for(var j=0;j<tableRows;j++){
+                for(var i=0;i<tableRows;i++){
+
+                    if(i!=j){
+                var lupper = lupper * ((x-arrayDataX[i]));
+                
+                    }
+                    if((i+1) < tableRows){
+                    var ldown =ldown * (arrayDataX[i]-arrayDataX[i+1])
+                    }
+
+                }
+
+                arrayDataL1.push((lupper/ldown))
+            }
+
+
 
             var ans=0;
-
-
-            var ans=y1*l1+ y2*l2;
+            for(var i=0;i<tableRows;i++){
+                var ans=ans+arrayDataY[i]*arrayDataL1[i];
+            }
+            
            var  result = document.getElementById("resultOfy");
             result.value=ans
             
