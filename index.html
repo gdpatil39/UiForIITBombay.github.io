@@ -5,67 +5,421 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta charset=utf-8 />
     <title> </title>
-    
+    <link rel="stylesheet" type="text/css" href="design.css">
 
 
 
 
 </head>
-<body>
-    <form >
 
-        <label for="numberOfRows">Enter Number of data</label> 
-        <input type="text" id="numberOfRows" value="1" >
-      
+<body style=" background-color: lightblue;">
+    <div>
+        <div class="div1">
+            <h2 style="color:red;">All Invoices</h2>
+            <form>
 
-    </form>
-    <table style=" border:1px solid ">
-        <tr>
-            <th>x1</th>
-            <th>y1</th>
+                <label for="Begin Date">Begin Date</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="End Date">End Date</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;
+                <label for="Status">Status</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;
+                <label for="Client">Client</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+                <input type="date" id="Begin" name="Begin" class="box darkBlue filter">
 
-        </tr>
+                <input type="date" id="End" name="End" class="box lightBlue filter">
 
-        <tbody id="myTable" class=""></tbody>
-    </table>
-    <form onsubmit="calculate()">  
+                <select class="box lightRed filter" id="status">
+                    <option value="any" selected> Any
+                    <option value="draft"> draft
+                    <option value="paid"> paid
+                    <option value="partial payment">partial payment</option>
 
-        <label for="">Enter X to calculate y</label> 
-        <input type="text" id="yvalue">
-        <br>
-        <input type="button" value="calculate y is" id="" onsubmit="">
+                </select>
 
-    </form>
-    <script>
+                <select class="box blue filter" id="client">
+                    <option value="any" selected> Any
+                    <option value="in-state">In-State
+                    <option value="out-state">Out-State</option>
+                </select>
+                <br>
+                *THis data has been shown according to your given informations.
+        </div>
+        </form>
+        <table style=" width:100%; background-color: #D6EEEE; border-collapse: collapse ;text-align: center;">
 
-    var data = [{x:1,y:1},
-    {x:3,y:9},
-    {x:5,y:125},
-    {x:6,y:216},
-    {x:7,y:343}
-    ]
-    $("#numberOfRows").on("change", function () {
-        var rows=document.getElementById(numberOfRows).nodeValue
-        console.log("in buildTable2",{rows})
-        buildTable(data,rows)
+            <tr  class="" >
+                <th  data-column="invoice" data-order="desc">invoice &#9650</th>
+                <th data-column="client_name" data-order="desc">client_name &#9650</th>
+                <th data-column="date" data-order="desc">date &#9650</th>
+                <th data-column="due_date" data-order="desc">due_date &#9650</th>
+                <th data-column="total" data-order="desc">total &#9650</th>
+                <th data-column="balance" data-order="desc">balance &#9650</th>
+                <th  data-column="status" data-order="desc">status &#9650</th>
+            </tr>
 
-    })  
-    buildTable(data, data.length)
-        // buildTable(document.getElementById(numberOfRows).value)
-        var rows=document.getElementById(numberOfRows)
-        console.log("in buildTable",{rows})
-          function buildTable(data,r ) {
+            <tbody id="myTable" class="">
 
-              console.log("in buildTable")
+            </tbody>
+        </table>
+
+
+    </div>
+    <script type="text/javascript">
+        
+        
+        var data = [{
+            invoice: "1",
+            client_name: "Conchita Scanlon",
+            Client_type: "out-state",
+            date: "2019-05-11",
+            due_date: "2021-12-11",
+            total: "554",
+            balance: "554",
+            status: "Draft"
+
+        },
+        {
+            invoice: "2",
+            client_name: "Inglis Langdale",
+            Client_type: "in-state",
+            date: "2019-05-11",
+            due_date: "2021-12-11",
+            total: "256",
+            balance: "455",
+            status: "Paid"
+
+        },
+        {
+            invoice: "3",
+            client_name: "Kacie Lamlin",
+            Client_type: "in-state",
+            date: "2019-05-11",
+            due_date: "2021-12-11",
+            total: "763",
+            balance: "469",
+            status: "Partial payment"
+
+        },
+        {
+            invoice: "4",
+            client_name: "Kev Belcher",
+            Client_type: "in-state",
+            date: "2019-05-11",
+            due_date: "2021-12-11",
+            total: "463",
+            balance: "018",
+            status: "Draft"
+
+        },
+        {
+            invoice: "5",
+            client_name: "Reynolds Gluyus",
+            Client_type: "in-state",
+            date: "2019-05-11",
+            due_date: "2021-12-11",
+            total: "942",
+            balance: "355",
+            status: "Draft"
+
+        },
+        {
+            invoice: "6",
+            client_name: "Jock Lummasana",
+            Client_type: "in-state",
+            date: "2019-05-11",
+            due_date: "2021-12-11",
+            total: "679",
+            balance: "245",
+            status: "Draft"
+
+        },
+        {
+            invoice: "7",
+            client_name: "Vanya Mayfield",
+            Client_type: "out-state",
+            date: "2019-05-11",
+            due_date: "2021-12-11",
+
+            total: "978",
+            balance: "646",
+            status: "Draft"
+
+        },
+        {
+            invoice: "8",
+            client_name: "Burgess Garnsworth",
+            Client_type: "out-state",
+            date: "2019-05-11",
+            due_date: "2021-12-11",
+
+            total: "978",
+            balance: "646",
+            status: "Paid"
+
+        },
+        {
+            invoice: "9",
+            client_name: "Faun Castilljo",
+            Client_type: "out-state",
+            date: "2019-05-11",
+            due_date: "2021-12-11",
+
+            total: "978",
+            balance: "646",
+            status: "Paid"
+
+        },
+        {
+            invoice: "10",
+            client_name: "Jacintha Tench",
+            Client_type: "out-state",
+            date: "2019-05-11",
+            due_date: "2021-12-11",
+
+            total: "978",
+            balance: "646",
+            status: "Paid"
+
+        },
+        {
+            invoice: "11",
+            client_name: "Reeva Sharphouse",
+            Client_type: "in-state",
+            date: "2019-05-11",
+            due_date: "2021-12-11",
+
+            total: "978",
+            balance: "646",
+            status: "Paid"
+
+        },
+        {
+            invoice: "12",
+            client_name: "Conchita Scanlon",
+            Client_type: "in-state",
+            date: "2019-05-11",
+            due_date: "2021-12-11",
+
+            total: "978",
+            balance: "646",
+            status: "Partial payment"
+
+        },
+        {
+            invoice: "13",
+            client_name: "Brody Bertl",
+            Client_type: "in-state",
+            date: "2019-05-11",
+            due_date: "2021-12-11",
+
+            total: "978",
+            balance: "646",
+            status: "Partial payment"
+
+        },
+        {
+            invoice: "14",
+            client_name: "Latrina Picopp",
+            Client_type: "in-state",
+            date: "2019-05-11",
+            due_date: "2021-12-11",
+
+            total: "978",
+            balance: "646",
+            status: "Partial payment"
+
+        },
+        {
+            invoice: "15",
+            client_name: "Roselin Laetham",
+            Client_type: "out-state",
+            date: "2019-05-11",
+            due_date: "2021-12-11",
+
+            total: "978",
+            balance: "646",
+            status: "Partial payment"
+
+        }
+        ]
+        buildTable(data)
+        $(".filter").on("change", function () {
+           
+            var a = $("#Begin").val()
+            if(a!=0){
+                var dataBegin= filterOfBegin(a,data)
+           }else{
+               
+               var dataBegin= data
+            }
+
+            var b = $("#End").val()
+            if(b!=0){
+                var dataEnd= filterOfEnd(b,dataBegin)
+           }else{
+               
+               var dataEnd= dataBegin
+            }
+            console.log("date",a)
+            console.log("date",b)
+            var statusvalue = $("#status").val()
+            console.log(statusvalue)
+            console.log(clientValue)
+            
+            var sdata = filterofstatus(statusvalue, dataEnd)
+            var clientValue = $("#client").val()
+            var cdata = filterOfClinet(clientValue, sdata)
+            buildTable(cdata)
+        })
+        function filterOfBegin(a,data){
+            
+
+            var beginFilter = []
+            for (var i = 0; i < data.length; i++) {
+                var date2 = data[i].date
+                if (a == date2) {
+                    console.log("begin1",date2)
+
+                    beginFilter.push(data[i])
+                    console.log(i)
+
+                } 
+               
+                console.log("begin2",a ,data[i].date)
+
+            }
+
+            return beginFilter
+
+        }
+        function filterOfEnd(b,data){
+            
+            
+            var endFilter = []
+            for (var i = 0; i < data.length; i++) {
+                var date2 = data[i].due_date
+                if (b == date2) {
+                    endFilter.push(data[i])
+                    console.log(i)
+
+                } 
+            }
+            return endFilter
+           
+        }
+
+        $('th').on('click', function(){
+		var column = $(this).data('column')
+		var order = $(this).data('order')
+		var text = $(this).html()
+		text = text.substring(0, text.length - 1)
+
+		if(order == 'desc'){
+			$(this).data('order', "asc")
+			data = data.sort((a,b) => a[column] > b[column] ? 1 : -1)
+			text += '&#9660'
+
+		}else{
+			$(this).data('order', "desc")
+			data = data.sort((a,b) => a[column] < b[column] ? 1 : -1)
+			text += '&#9650'
+
+		}
+		$(this).html(text)
+		buildTable(data)
+	})
+// $("#Begin").on("change", function () {
+        //     var checkBeginEnd = true
+        //     if(checkEnd){
+        //         var a = $("#End").val()
+        //     var b = $("#Begin").val()
+        //     console.log(a)
+        //     var endData = filterOfEnd(a,b,data)
+        //     buildTable(endData)
+        //     }
+        // })
+        // $("#End").on("change", function () {
+        //     var checkEnd = true
+        //     if(checkBegin){
+        //         var a = $("#End").val()
+        //     var b = $("#Begin").val()
+        //     console.log(a)
+        //     var endData = filterOfEnd(a,b,data)
+        //     buildTable(endData)
+        //     }
+            
+
+        // })
+        // $("#status").on("change", function () {
+        //     var statusvalue = $("#status").val()
+        //     console.log(statusvalue)
+        //     var sdata = filterofstatus(statusvalue, data)
+        //     console.log(sdata)
+        //     buildTable(sdata)
+        // })
+        // $("#client").on("change", function () {
+        //     var clientValue = $("#client").val()
+        //     console.log(clientValue)
+        //     var sdata = filterOfClinet(clientValue, data)
+        //     console.log(sdata)
+        //     buildTable(sdata)
+        // })
+
+        function filterOfClinet(clientValue, clientData) {
+            var clientFilter = []
+            if ("any" == clientValue) {
+                    return clientData
+                }
+            for (var i = 0; i < clientData.length; i++) {
+                var clientValue1 = clientValue.toLowerCase()
+                var client = clientData[i].Client_type.toLowerCase()
+                if (client == clientValue1) {
+                    clientFilter.push(clientData[i])
+                    console.log(i)
+
+                } 
+            }
+            return clientFilter
+        }
+        function filterofstatus(statusvalue, statusdata) {
+            var statusfilter = []
+            if ("any" == statusvalue) {
+                    return statusdata
+                }
+            for (var i = 0; i < statusdata.length; i++) {
+                
+                var status = statusdata[i].status.toLowerCase()
+                if (status == statusvalue) {
+                    statusfilter.push(statusdata[i])
+                    console.log(i)
+
+                } 
+            }
+            return statusfilter
+        }
+
+        function buildTable(data) {
             var table = document.getElementById('myTable')
             table.innerHTML = ""
-            for (let i = 0; i < r; i++) {
-            
-               
+            for (let i = 0; i < data.length; i++) {
+                var test = ""
+                if (data[i].status == "Partial payment") {
+                    test = '"box darkBlue"'
+                } else {
+                    if (data[i].status == "Paid") {
+                        test = '"box lightBlue"'
+                    } else {
+                        test = '"box lightRed" '
+                    }
+                }
                 var row = `<tr>
-                                    <td class="">${data[i].x}</td>
-                                    <td class="">${data[i].y}</td>
-                                    
+                                    <td class="textblue">${data[i].invoice}</td>
+                                    <td class="textblue">${data[i].client_name}</td>
+                                    <td class="textwhite">${data[i].date}</td>
+                                    <td class="textwhite">${data[i].due_date}</td>
+                                    <td class="textred">${data[i].total}</td>
+                                    <td class="textred">${data[i].balance}</td>
+                                    <td class=${test}>${data[i].status}</td>
                               </tr>`
 
                 table.innerHTML += row
@@ -73,15 +427,12 @@
 
             }
         }
-        calculate(){
-           var yvalue= document.getElementById('yvalue')
-           for (let i = 0; i < r; i++) {
-               
-           }
-            
-        }
+
 
     </script>
 
+
 </body>
+
+
 </html>
