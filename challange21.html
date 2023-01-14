@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <form >
+
+        <label for="numberOfRows">Enter Number of data</label> 
+        <input type="text" id="numberOfRows"  ><br>
+        <input type="button"  id ="p1" value ="submit" onclick="f1()" >
+      
+
+    </form>
+    <table>
+        <tr>
+            <th>x</th>
+            <th>y</th>
+        </tr>
+        <tbody id="tbody"></tbody>
+
+    </table>
+    <form >
+
+        <label for="valueOfy">Enter X to calculate y</label> 
+        <input type="text" id="valueOfy" ><br>
+        <input type="button"  id ="p2" value ="submit" onclick="calculatey()" >
+        <input type="text" id="resultOfy"  ><br>
+      
+
+    </form>
+    <script>
+        function f1(){
+            console.log("hi in f1");
+            var tableRows =document.getElementById("numberOfRows").value;
+            var tablerender =document.getElementById("tbody");
+
+            console.log("hi in f1",tableRows);
+            for(i=0;i<tableRows;i++){
+                var row = `<tr>
+                                    <td class="textblue"><input type="text" id="x${i}"  placeholder="x${i}"><br></td>
+                                    <td class="textblue"><input type="text" id="y${i}"  placeholder="y${i}"  ><br></td>
+                                    
+                              </tr>`
+
+                              tablerender.innerHTML += row
+            }
+
+        }
+        function calculatey(){
+            arrayDataX =[];
+            arrayDataY =[];
+            arrayDataL1 =[];
+            
+            var tableRows =document.getElementById("numberOfRows").value;
+
+            var ans=0;
+
+
+            var ans=y1*l1+ y2*l2;
+           var  result = document.getElementById("resultOfy");
+            result.value=ans
+            
+        }
+
+
+    </script>
+</body>
+</html>
